@@ -19,8 +19,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     textAlign: 'center',
+    lineHeight: 24,
     fontWeight: '500',
-    color: 'black',
+    color: '#007084',
+    marginTop: 8,
   },
   ratingsContainer: {
     flexDirection: 'row',
@@ -37,18 +39,17 @@ const styles = StyleSheet.create({
   oldPrice: {
     fontSize: 16,
     textDecorationLine: 'line-through',
-    color: 'red',
-    fontWeight: 'bold',
+    color: '#ff424e',
   },
   description: {
-    marginVertical: 8,
+    marginBottom: 8,
     lineHeight: 24,
     textAlign: 'justify',
   },
   pickerContainer: {
     borderWidth: 1,
     borderColor: '#d1d1d1',
-    marginVertical: 16,
+    marginVertical: 8,
     borderRadius: 4,
   },
 });

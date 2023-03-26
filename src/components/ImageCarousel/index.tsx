@@ -27,7 +27,7 @@ const ImageCarousel = ({images}: {images: string[]}) => {
         data={images}
         renderItem={({item, index}) => (
           <Image
-            key={item}
+            key={Math.random()}
             style={[styles.image, {width: windowWidth - 40}]}
             source={{uri: item}}
           />
@@ -41,17 +41,17 @@ const ImageCarousel = ({images}: {images: string[]}) => {
         viewabilityConfig={{viewAreaCoveragePercentThreshold: 50}}
         onViewableItemsChanged={onFlatlistUpdate}
         keyExtractor={(item, index) => {
-          return item;
+          return item + Math.random();
         }}
       />
       <View style={styles.dotContainer}>
         {images.map((image, index) => (
           <View
-            key={image}
+            key={Math.random()}
             style={[
               styles.dot,
               {
-                backgroundColor: index == activeIndex ? '#2374e1' : '#ffffff',
+                backgroundColor: index == activeIndex ? '#007185' : '#ffffff',
               },
             ]}></View>
         ))}
@@ -70,12 +70,12 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   dot: {
-    width: 12,
-    height: 12,
-    borderRadius: 12,
-    borderWidth: 1,
+    width: 8,
+    height: 8,
+    borderRadius: 8,
+    borderWidth: 0.5,
     backgroundColor: '#ffffff',
-    borderColor: '#989898',
+    borderColor: '#007185',
     marginHorizontal: 4,
   },
   dotContainer: {

@@ -3,7 +3,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import ProductScreen from '../screens/ProductScreen';
 import HomeScreen from '../screens/HomeScreen';
-import Button from '../components/Button';
 import {SafeAreaView, Text, TextInput, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';

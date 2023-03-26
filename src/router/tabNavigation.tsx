@@ -2,6 +2,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
+import MenuScreen from '../screens/MenuScreen';
 import ShoppingCartScreen from '../screens/ShoppingCartScreen';
 import Entypo from 'react-native-vector-icons/Entypo';
 import HomeStack from './HomeStack';
@@ -15,12 +16,13 @@ const TabNavigation = () => {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarInactiveTintColor: '#b1b1b1',
+        tabBarActiveTintColor: '#007185',
       }}>
       <Tab.Screen
         name="Home"
         component={HomeStack}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({focused, color}) => (
             <Entypo name="home" color={color} size={25} />
           ),
           headerShown: false,
@@ -30,7 +32,7 @@ const TabNavigation = () => {
         name="Order"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({focused, color}) => (
             <Entypo name="back-in-time" color={color} size={25} />
           ),
           headerTitleAlign: 'center',
@@ -40,7 +42,7 @@ const TabNavigation = () => {
         name="Shopping Cart"
         component={ShoppingCartStack}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({focused, color}) => (
             <Entypo name="shopping-cart" color={color} size={25} />
           ),
           headerShown: false,
@@ -50,7 +52,7 @@ const TabNavigation = () => {
         name="Categories"
         component={ShoppingCartScreen}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({focused, color}) => (
             <Entypo name="list" color={color} size={25} />
           ),
           headerTitleAlign: 'center',
@@ -58,9 +60,9 @@ const TabNavigation = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ShoppingCartScreen}
+        component={MenuScreen}
         options={{
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({focused, color}) => (
             <Entypo name="user" color={color} size={25} />
           ),
           headerTitleAlign: 'center',

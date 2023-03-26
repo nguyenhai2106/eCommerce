@@ -1,0 +1,21 @@
+type Product @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String!
+  description: String
+  image: String!
+  images: [String!]!
+  avgRating: Float
+  ratings: Int
+  price: Float!
+  oldPrice: Float
+  options: [AWSJSON]
+}
+
+type CartProduct @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  userSub: String!
+  quantity: Int!
+  option: String
+  productID: ID!
+  product: [Product] @hasMany
+} 

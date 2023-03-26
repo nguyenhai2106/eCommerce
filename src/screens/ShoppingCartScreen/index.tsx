@@ -29,7 +29,17 @@ const ShoppingCartScreen = () => {
               Subtotal ({carts.length} items):{' '}
               <Text style={styles.totalAmount}>${totalAmount.toFixed(2)}</Text>
             </Text>
-            <Button text="Process To Checkout" onPress={onCheckout} />
+            <Button
+              text="Đặt Hàng"
+              onPress={onCheckout}
+              containerStyles={{
+                backgroundColor: '#FFA41C',
+                borderColor: '#FF8F00',
+                color: '#0F1111',
+                borderRadius: 100,
+                marginBottom: 16,
+              }}
+            />
           </View>
         )}
       />
@@ -49,7 +59,7 @@ const styles = StyleSheet.create({
   },
   totalAmount: {
     fontSize: 16,
-    color: 'red',
+    color: '#ff424e',
     fontWeight: '500',
   },
 });

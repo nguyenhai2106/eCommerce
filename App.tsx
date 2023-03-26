@@ -8,9 +8,7 @@
 import * as React from 'react';
 import {SafeAreaView, StyleSheet, useColorScheme} from 'react-native';
 
-import {Amplify} from 'aws-amplify';
 import awsExports from './src/aws-exports';
-Amplify.configure(awsExports);
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Router from './src/router';

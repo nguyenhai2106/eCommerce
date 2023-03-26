@@ -3,31 +3,35 @@ import React from 'react';
 import FontAweSome from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
 
+interface size {
+  weight: number;
+  price: number;
+}
+
 interface ProductItemProps {
   item: {
     _id: object;
     name: string;
-    image: string;
+    images: string[];
     avgRating: number;
     ratings: number;
-    price: number;
-    oldPrice?: number;
     categories?: string[];
+    sizes?: size[];
+    discount?: number;
   };
 }
 
 const ProductItem = ({item}: ProductItemProps) => {
   const navigation = useNavigation();
   const onPress = () => {
-    let id: object = item._id;
-    navigation.navigate('Product Details' as never, id as never);
+    navigation.navigate('Product Details' as never, {id: item._id});
   };
   return (
     <Pressable onPress={onPress} style={styles.root}>
       <Image
         style={styles.image}
         source={{
-          uri: item.image,
+          uri: item.images[0],
         }}
       />
       <View style={styles.rightContainer}>
@@ -74,10 +78,21 @@ const ProductItem = ({item}: ProductItemProps) => {
           })}
           <Text>{item.ratings}</Text>
         </View>
+        <View style={styles.categories}>
+          {item.categories &&
+            item.categories.map(category => <Text>{category}&nbsp;</Text>)}
+        </View>
         <Text style={styles.price}>
-          from ${item.price}
-          {item.oldPrice && (
-            <Text style={styles.oldPrice}> ${item.oldPrice}</Text>
+          chỉ từ{' '}
+          {item.sizes[0].price * (1 - (item.discount ? item.discount : 0))}đ đến{' '}
+          {item.sizes[item.sizes.length - 1].price *
+            (1 - (item.discount ? item.discount : 0))}
+          đ&ensp;
+          {item.discount && (
+            <Text style={styles.oldPrice}>
+              từ {item.sizes[0].price}đ đến{' '}
+              {item.sizes[item.sizes.length - 1].price}đ
+            </Text>
           )}
         </Text>
       </View>
@@ -121,13 +136,18 @@ const styles = StyleSheet.create({
     margin: 2,
   },
   price: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'black',
+    fontSize: 16,
+    fontWeight: '400',
+    color: '#007084',
   },
   oldPrice: {
     fontSize: 12,
     fontWeight: 'normal',
     textDecorationLine: 'line-through',
+    color: '#007084',
+  },
+  categories: {
+    flexDirection: 'row',
+    marginBottom: 6,
   },
 });

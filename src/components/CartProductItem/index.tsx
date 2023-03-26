@@ -77,7 +77,7 @@ const CartProductItem = ({cartItem}: CartProductItemProps) => {
             <Text>{cartItem.item.ratings}</Text>
           </View>
           <Text style={styles.price}>
-            from ${cartItem.item.price}
+            from ${cartItem.item.price} &nbsp;
             {cartItem.item.oldPrice && (
               <Text style={styles.oldPrice}> ${cartItem.item.oldPrice}</Text>
             )}
@@ -124,20 +124,20 @@ const styles = StyleSheet.create({
   ratingsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 4,
   },
   star: {
     margin: 2,
   },
   price: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'black',
+    fontSize: 16,
+    fontWeight: '400',
+    color: '#ff424e',
   },
   oldPrice: {
     fontSize: 12,
     fontWeight: 'normal',
     textDecorationLine: 'line-through',
+    color: '#007084',
   },
   quantityContainer: {
     marginTop: 4,
